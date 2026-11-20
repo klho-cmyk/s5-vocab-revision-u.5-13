@@ -10,18 +10,12 @@
       --fg: #000000;
       --muted: #555555;
       --border: #000000;
-      --subtle-border: #cccccc;
+      --subtle: #cccccc;
       --surface: #fafafa;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--fg);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang HK", "Microsoft JhengHei", sans-serif;
       line-height: 1.6;
@@ -29,311 +23,509 @@
       display: flex;
       justify-content: center;
     }
-
-    .container {
-      width: 100%;
-      max-width: 760px;
-    }
-
+    .container { width: 100%; max-width: 760px; }
     header {
       border-bottom: 2px solid var(--border);
-      padding-bottom: 16px;
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
     }
-
-    h1 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
+    h1 { font-size: 1.3rem; font-weight: 700; }
+    .subtitle { font-size: 0.85rem; color: var(--muted); }
+    .box { border: 1px solid var(--border); padding: 20px; margin-bottom: 20px; }
+    .box ul { margin: 14px 0 18px 20px; }
+    .box li { margin-bottom: 8px; }
     .status-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 16px;
+      flex-wrap: wrap;
+      gap: 10px;
       border: 1px solid var(--border);
-      margin-bottom: 24px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
       font-size: 0.9rem;
       font-weight: 600;
-      gap: 12px;
-      flex-wrap: wrap;
     }
-
     .badge {
       border: 1px solid var(--border);
       padding: 2px 8px;
       font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
     }
-
-    .timer {
-      font-variant-numeric: tabular-nums;
-      font-size: 1rem;
-    }
-
-    .timer.urgent {
-      text-decoration: underline;
-    }
-
-    .question-box {
-      margin-bottom: 24px;
-    }
-
     .q-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
-
-    .question-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .options-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    button.option-btn {
+    .q-text { font-size: 1.15rem; font-weight: 600; margin-bottom: 18px; }
+    .options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    button.opt-btn {
       background: var(--bg);
       color: var(--fg);
       border: 1px solid var(--border);
-      padding: 14px 16px;
+      padding: 13px 15px;
       text-align: left;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.12s ease, color 0.12s ease;
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
-
-    button.option-btn:hover:not(:disabled) {
-      background: var(--fg);
-      color: var(--bg);
-    }
-
-    button.option-btn:disabled {
-      cursor: default;
-    }
-
-    button.option-btn.selected-wrong {
-      background: var(--fg);
-      color: var(--bg);
-      text-decoration: line-through;
-    }
-
-    button.option-btn.correct-highlight {
-      border: 2px solid var(--border);
-      font-weight: 700;
-    }
-
-    .feedback-panel {
-      margin-top: 24px;
+    button.opt-btn:hover:not(:disabled) { background: var(--fg); color: var(--bg); }
+    button.opt-btn:disabled { cursor: default; }
+    button.opt-btn.wrong { background: var(--fg); color: var(--bg); text-decoration: line-through; }
+    button.opt-btn.correct { border: 2px solid var(--border); font-weight: 700; }
+    .feedback {
+      margin-top: 20px;
       border: 1px solid var(--border);
-      padding: 20px;
       background: var(--surface);
+      padding: 18px;
     }
-
-    .feedback-header {
+    .feedback-title {
       font-weight: 700;
-      font-size: 1.05rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       padding-bottom: 8px;
-      border-bottom: 1px solid var(--subtle-border);
+      border-bottom: 1px solid var(--subtle);
     }
-
-    .choice-explanation {
-      margin-bottom: 12px;
-      font-size: 0.92rem;
-    }
-
-    .choice-explanation:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .zh {
-      color: var(--muted);
-      display: block;
-      margin-top: 2px;
-    }
-
-    .btn-primary {
+    .exp-item { margin-bottom: 10px; font-size: 0.92rem; }
+    .exp-zh { display: block; color: var(--muted); margin-top: 2px; }
+    .btn-main {
       background: var(--fg);
       color: var(--bg);
       border: 1px solid var(--border);
-      padding: 12px 24px;
+      padding: 11px 22px;
       font-size: 0.95rem;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 16px;
+      margin-top: 14px;
     }
-
-    .btn-primary:hover {
-      background: var(--bg);
-      color: var(--fg);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .summary-stats {
+    .btn-main:hover { background: var(--bg); color: var(--fg); }
+    .hidden { display: none; }
+    .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
-
-    .stat-card {
-      border: 1px solid var(--border);
-      padding: 16px;
-    }
-
-    .stat-value {
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-      font-size: 0.9rem;
-    }
-
-    th, td {
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background: var(--surface);
-      font-weight: 700;
-    }
-
-    .intro-box {
-      border: 1px solid var(--border);
-      padding: 24px;
-    }
-
-    .intro-box ul {
-      margin: 16px 0 20px 20px;
-    }
-
-    .intro-box li {
-      margin-bottom: 8px;
-    }
+    .stat { border: 1px solid var(--border); padding: 14px; }
+    .stat-val { font-size: 1.5rem; font-weight: 700; }
+    .stat-lbl { font-size: 0.8rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem; }
+    th, td { border: 1px solid var(--border); padding: 9px 11px; text-align: left; vertical-align: top; }
+    th { background: var(--surface); }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div>
-        <h1>S5 English Vocabulary Revision (Units 5–13)</h1>
-        <div class="subtitle">AI Mastery Trainer • Bilingual Explanations (EN / 繁體中文)</div>
-      </div>
+      <h1>S5 English Vocabulary Revision (Units 5–13)</h1>
+      <div class="subtitle">AI Mastery Trainer • Bilingual Explanations (EN / 繁體中文)</div>
     </header>
 
-    <section id="start-screen" class="intro-box">
+    <section id="start-screen" class="box">
       <p><strong>Test Mastery Mode / 精熟練習模式</strong></p>
       <ul>
-        <li><strong>Exact Test Sequence:</strong> All 30 questions appear in the exact order of the exam paper. (題目與選項順序與測驗卷完全一致。)</li>
-        <li><strong>100% Mastery Rule:</strong> The session will not finish until every single question is answered correctly. Missed questions are queued for re-testing. (必須答對所有題目才會結束；答錯或超時的題目將會重新出現。)</li>
-        <li><strong>Adaptive Time Limits:</strong> Easy = 15s, Medium = 22s, Hard = 30s. (根據題目難度設有不同限時。)</li>
-        <li><strong>Bilingual AI Coach:</strong> Detailed English and Chinese explanations are displayed for every option whenever an error occurs. (答錯時提供所有選項的中英雙語解析。)</li>
+        <li><strong>Exact Order:</strong> All 30 questions appear in the exact order of the test paper. (題目與選項順序與測驗卷完全相同。)</li>
+        <li><strong>100% Mastery:</strong> You must answer every question correctly before the game ends. Missed items return later in the queue. (必須答對全部 30 題才會結束；答錯或超時會重新排隊再測。)</li>
+        <li><strong>Difficulty Timers:</strong> Easy = 15s, Medium = 22s, Hard = 30s. (依難度設有時限。)</li>
+        <li><strong>Bilingual Explanations:</strong> Errors show English and Chinese explanations for every option. (答錯時顯示所有選項中英雙語解析。)</li>
       </ul>
-      <button class="btn-primary" onclick="startGame()">Start Revision / 開始練習</button>
+      <button type="button" class="btn-main" id="start-btn">Start Revision / 開始練習</button>
     </section>
 
     <section id="quiz-screen" class="hidden">
       <div class="status-bar">
-        <div>Mastered: <span id="mastered-count">0</span> / 30</div>
-        <div>Remaining in Queue: <span id="queue-count">30</span></div>
-        <div class="timer" id="timer-display">Time: 15s</div>
+        <div>Mastered: <span id="mastered-num">0</span> / 30</div>
+        <div>Remaining: <span id="rem-num">30</span></div>
+        <div id="timer-box">Time: 15s</div>
       </div>
 
-      <div class="question-box">
+      <div class="box">
         <div class="q-meta">
-          <span id="q-number-label">Question 1</span>
-          <span class="badge" id="difficulty-badge">Easy • 15s</span>
+          <span id="q-label">Question 1 of 30</span>
+          <span class="badge" id="q-diff">Easy • 15s</span>
         </div>
-        <div class="question-text" id="question-text"></div>
-        <div class="options-grid" id="options-container"></div>
+        <div class="q-text" id="q-text"></div>
+        <div class="options" id="options-box"></div>
       </div>
 
-      <div id="feedback-panel" class="feedback-panel hidden">
-        <div class="feedback-header" id="feedback-title"></div>
-        <div id="explanations-container"></div>
-        <button class="btn-primary" id="next-btn" onclick="nextQuestion()">Next Question / 下一題</button>
+      <div id="feedback-box" class="feedback hidden">
+        <div class="feedback-title" id="feedback-title"></div>
+        <div id="exp-list"></div>
+        <button type="button" class="btn-main" id="next-btn">Next Question / 下一題</button>
       </div>
     </section>
 
     <section id="summary-screen" class="hidden">
-      <h2 style="margin-bottom: 16px;">Revision Summary / 練習總結</h2>
-      <div class="summary-stats">
-        <div class="stat-card">
-          <div class="stat-value" id="stat-first-try">0 / 30</div>
-          <div class="stat-label">First-Try Accuracy / 首次答對率</div>
+      <h2 style="margin-bottom: 14px;">Revision Summary / 練習總結</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-val" id="sum-first">0 / 30</div>
+          <div class="stat-lbl">First-Try Accuracy / 首次答對</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value" id="stat-total-attempts">30</div>
-          <div class="stat-label">Total Attempts / 總作答次數</div>
+        <div class="stat">
+          <div class="stat-val" id="sum-attempts">30</div>
+          <div class="stat-lbl">Total Attempts / 總作答次數</div>
         </div>
-        <div class="stat-card">
-          <div class="stat-value" id="stat-time">0m 0s</div>
-          <div class="stat-label">Total Time / 總用時</div>
+        <div class="stat">
+          <div class="stat-val" id="sum-time">0m 0s</div>
+          <div class="stat-lbl">Total Time / 總用時</div>
         </div>
       </div>
-
-      <p style="margin-bottom: 12px; font-weight: 600;">Items Requiring Review / 需要重溫的題目：</p>
-      <div id="review-table-wrapper"></div>
-
-      <button class="btn-primary" onclick="location.reload()">Restart Practice / 重新練習</button>
+      <p style="font-weight: 600;">Items Requiring Review / 需要重溫的題目：</p>
+      <div id="review-area"></div>
+      <button type="button" class="btn-main" id="restart-btn">Restart Practice / 重新練習</button>
     </section>
   </div>
 
   <script>
     const QUESTIONS = [
-      {
-        id: 1,
-        q: "After practicing her presentation many times, she felt ________ that she would do well.",
-        options: ["A. depressed", "B. jealous", "C. confident", "D. confused"],
-        answer: 2,
-        difficulty: "Easy",
-        timeLimit: 15,
-        explanations: [
-          { en: "A. depressed (adj.): very sad and without hope.", zh: "A. depressed（抑鬱的；沮喪的）：感到非常悲傷和絕望，與「練習多次後覺得會表現好」的語境不符。" },
-          { en: "B. jealous (adj.): unhappy because someone has something you want.", zh: "B. jealous（妒忌的）：因別人擁有自己想要的東西而不快，不合文意。" },
-          { en: "C. confident (adj.): [Correct] feeling sure about your own ability to do things successfully.", zh: "C. confident（有信心的）：【正確答案】對自己的能力感到肯定，相信自己能表現出色。" },
-          { en: "D. confused (adj.): unable to think clearly or understand.", zh: "D. confused（困惑的）：思路不清或不明白，與多次練習後的狀態相反。" }
-        ]
-      },
-      {
-        id:
+      { id: 1, q: "After practicing her presentation many times, she felt ________ that she would do well.", options: ["A. depressed", "B. jealous", "C. confident", "D. confused"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. depressed (adj.): very sad and without hope.", zh: "A. depressed（抑鬱的；沮喪的）：與「練習多次後覺得表現好」不符。" },
+        { en: "B. jealous (adj.): unhappy because someone has something you want.", zh: "B. jealous（妒忌的）：與句意無關。" },
+        { en: "C. confident (adj.): [Correct] feeling sure about your own ability to do well.", zh: "C. confident（有信心的）：【正確答案】對自己表現有把握。" },
+        { en: "D. confused (adj.): unable to think clearly or understand.", zh: "D. confused（困惑的）：與多次練習後的狀態相反。" }
+      ]},
+      { id: 2, q: "When you apply for a passport, you must state your ________ on the official form.", options: ["A. appearance", "B. continent", "C. nationality", "D. landscape"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. appearance (n.): how someone or something looks.", zh: "A. appearance（外貌）：申請護照表格不填外貌。" },
+        { en: "B. continent (n.): a large landmass such as Asia.", zh: "B. continent（大洲）：非個人資料。" },
+        { en: "C. nationality (n.): [Correct] legal status of belonging to a nation.", zh: "C. nationality（國籍）：【正確答案】申請護照必須填寫國籍。" },
+        { en: "D. landscape (n.): scenery across a large area of land.", zh: "D. landscape（風景）：與表格無關。" }
+      ]},
+      { id: 3, q: "After running the marathon, he found it quite difficult to ________ normally.", options: ["A. pour", "B. nod", "C. cover", "D. breathe"], answer: 3, diff: "Easy", sec: 15, exp: [
+        { en: "A. pour (v.): to flow in a stream.", zh: "A. pour（傾倒）：不合文意。" },
+        { en: "B. nod (v.): to move the head up and down.", zh: "B. nod（點頭）：不合文意。" },
+        { en: "C. cover (v.): to put something over another thing.", zh: "C. cover（覆蓋）：不合邏輯。" },
+        { en: "D. breathe (v.): [Correct] to take air into and out of the lungs.", zh: "D. breathe（呼吸）：【正確答案】跑完馬拉松後氣喘，難正常呼吸。" }
+      ]},
+      { id: 4, q: "The doctor advised him to eat healthier food and exercise more because he was slightly ________.", options: ["A. sensible", "B. overweight", "C. generous", "D. athletic"], answer: 1, diff: "Easy", sec: 15, exp: [
+        { en: "A. sensible (adj.): showing good judgment.", zh: "A. sensible（明智的）：非減肥原因。" },
+        { en: "B. overweight (adj.): [Correct] heavier than is healthy.", zh: "B. overweight（超重的）：【正確答案】體重過重故需健康飲食與運動。" },
+        { en: "C. generous (adj.): willing to give freely.", zh: "C. generous（慷慨的）：與體重無關。" },
+        { en: "D. athletic (adj.): physically strong and fit.", zh: "D. athletic（健壯的）：與文意相反。" }
+      ]},
+      { id: 5, q: "We had to stay indoors because there was a loud ________ with lightning and heavy rain.", options: ["A. shower", "B. climate", "C. thunderstorm", "D. continent"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. shower (n.): a brief period of rain.", zh: "A. shower（陣雨）：通常無巨響與閃電。" },
+        { en: "B. climate (n.): long-term regional weather patterns.", zh: "B. climate（氣候）：非單次天氣現象。" },
+        { en: "C. thunderstorm (n.): [Correct] a storm with thunder, lightning, and rain.", zh: "C. thunderstorm（雷暴）：【正確答案】伴隨雷聲、閃電與大雨的風暴。" },
+        { en: "D. continent (n.): a major landmass.", zh: "D. continent（大洲）：與天氣無關。" }
+      ]},
+      { id: 6, q: "We must take action to ________ the natural environment from pollution.", options: ["A. contrast", "B. breathe", "C. protect", "D. yawn"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. contrast (v.): to compare differences.", zh: "A. contrast（對比）：不合文意。" },
+        { en: "B. breathe (v.): to inhale and exhale.", zh: "B. breathe（呼吸）：無法與環境搭配。" },
+        { en: "C. protect (v.): [Correct] to keep safe from harm ('protect... from...').", zh: "C. protect（保護）：【正確答案】保護環境免受污染。" },
+        { en: "D. yawn (v.): to open the mouth wide when tired.", zh: "D. yawn（打呵欠）：不合邏輯。" }
+      ]},
+      { id: 7, q: "They were deeply ________ when the outdoor concert was cancelled because of the storm.", options: ["A. confident", "B. confused", "C. depressed", "D. disappointed"], answer: 3, diff: "Medium", sec: 22, exp: [
+        { en: "A. confident (adj.): feeling sure of oneself.", zh: "A. confident（有信心的）：不符活動取消心情。" },
+        { en: "B. confused (adj.): unable to understand clearly.", zh: "B. confused（困惑的）：取消原因已明確寫出。" },
+        { en: "C. depressed (adj.): severe, long-term sadness.", zh: "C. depressed（抑鬱的）：形容取消活動語氣過重。" },
+        { en: "D. disappointed (adj.): [Correct] sad because hoped-for plans did not happen.", zh: "D. disappointed（失望的）：【正確答案】期待的演唱會取消而感到失望。" }
+      ]},
+      { id: 8, q: "She has a great ________; she always makes us laugh with her funny jokes.", options: ["A. appearance", "B. relationship", "C. sense of humour", "D. mood"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. appearance (n.): outward look.", zh: "A. appearance（外貌）：與講笑話無關。" },
+        { en: "B. relationship (n.): connection between people.", zh: "B. relationship（關係）：不合文意。" },
+        { en: "C. sense of humour (n. phr.): [Correct] ability to find things funny or make people laugh.", zh: "C. sense of humour（幽默感）：【正確答案】用笑話逗人笑的能力。" },
+        { en: "D. mood (n.): how someone feels at a time.", zh: "D. mood（心情）：一時情緒。" }
+      ]},
+      { id: 9, q: "There is a sharp ________ between the hot, sunny days and the freezing cold nights in the desert.", options: ["A. contrast", "B. appearance", "C. region", "D. landscape"], answer: 0, diff: "Medium", sec: 22, exp: [
+        { en: "A. contrast (n.): [Correct] a clear difference between two things.", zh: "A. contrast（對比；反差）：【正確答案】沙漠日夜溫差形成明顯對比。" },
+        { en: "B. appearance (n.): outward look.", zh: "B. appearance（外觀）：不能形容溫差。" },
+        { en: "C. region (n.): a large area.", zh: "C. region（地區）：不合句意。" },
+        { en: "D. landscape (n.): scenery of land.", zh: "D. landscape（風景）：不合文意。" }
+      ]},
+      { id: 10, q: "Even on rainy days, her positive attitude and ________ smile brighten up the classroom.", options: ["A. jealous", "B. confused", "C. cheerful", "D. anxious"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. jealous (adj.): envious of others.", zh: "A. jealous（妒忌的）：與積極態度矛盾。" },
+        { en: "B. confused (adj.): puzzled.", zh: "B. confused（困惑的）：無法照亮課室。" },
+        { en: "C. cheerful (adj.): [Correct] noticeably happy and optimistic.", zh: "C. cheerful（開朗的）：【正確答案】開朗笑容與積極態度相呼應。" },
+        { en: "D. anxious (adj.): worried or nervous.", zh: "D. anxious（焦慮的）：不合文意。" }
+      ]},
+      { id: 11, q: "The artist painted a beautiful picture of the mountain ________.", options: ["A. climate", "B. appearance", "C. landscape", "D. surface"], answer: 2, diff: "Medium", sec: 22, exp: [
+        { en: "A. climate (n.): long-term weather.", zh: "A. climate（氣候）：無法直接描繪。" },
+        { en: "B. appearance (n.): how a person or object looks.", zh: "B. appearance（外貌）：不合山景繪畫語境。" },
+        { en: "C. landscape (n.): [Correct] natural scenery of an area of land.", zh: "C. landscape（風景；山水）：【正確答案】mountain landscape 指山景。" },
+        { en: "D. surface (n.): outer layer.", zh: "D. surface（表面）：不合文意。" }
+      ]},
+      { id: 12, q: "He felt a bit ________ when his brother got a brand new computer for his birthday.", options: ["A. jealous", "B. honest", "C. confident", "D. generous"], answer: 0, diff: "Easy", sec: 15, exp: [
+        { en: "A. jealous (adj.): [Correct] envious of something someone else has.", zh: "A. jealous（妒忌的）：【正確答案】看到哥哥收到新電腦感到妒忌。" },
+        { en: "B. honest (adj.): truthful.", zh: "B. honest（誠實的）：與文意無關。" },
+        { en: "C. confident (adj.): self-assured.", zh: "C. confident（自信的）：不合語境。" },
+        { en: "D. generous (adj.): willing to give.", zh: "D. generous（慷慨的）：不合文意。" }
+      ]},
+      { id: 13, q: "Many species of wild animals are now ________ due to habitat loss.", options: ["A. endangered", "B. rare", "C. freezing", "D. humid"], answer: 0, diff: "Medium", sec: 22, exp: [
+        { en: "A. endangered (adj.): [Correct] at serious risk of extinction.", zh: "A. endangered（瀕臨絕種的）：【正確答案】棲息地喪失導致瀕危。" },
+        { en: "B. rare (adj.): uncommon.", zh: "B. rare（稀有的）：不如 endangered 準確表達滅絕危機。" },
+        { en: "C. freezing (adj.): extremely cold.", zh: "C. freezing（冰冷的）：形容溫度，不合文意。" },
+        { en: "D. humid (adj.): warm and damp.", zh: "D. humid（潮濕的）：形容天氣，不合文意。" }
+      ]},
+      { id: 14, q: "The weather in summer is often very hot and ________, making everyone sweat.", options: ["A. mild", "B. freezing", "C. thick", "D. humid"], answer: 3, diff: "Easy", sec: 15, exp: [
+        { en: "A. mild (adj.): warm and pleasant.", zh: "A. mild（溫和的）：不會令人大汗淋漓。" },
+        { en: "B. freezing (adj.): extremely cold.", zh: "B. freezing（冰冷的）：與炎熱夏天矛盾。" },
+        { en: "C. thick (adj.): dense (used for fog/snow, not weather).", zh: "C. thick（濃密的）：不可直接形容天氣。" },
+        { en: "D. humid (adj.): [Correct] containing much water vapour in the air.", zh: "D. humid（潮濕的）：【正確答案】又熱又潮濕使人流汗。" }
+      ]},
+      { id: 15, q: "He is an exceptionally ________ musician who can play three different instruments perfectly.", options: ["A. reliable", "B. ordinary", "C. talented", "D. anxious"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. reliable (adj.): trustworthy.", zh: "A. reliable（可靠的）：無法體現樂器天賦。" },
+        { en: "B. ordinary (adj.): normal and unremarkable.", zh: "B. ordinary（普通的）：與精通三種樂器相反。" },
+        { en: "C. talented (adj.): [Correct] having natural ability to do something well.", zh: "C. talented（有才華的）：【正確答案】極具音樂天賦。" },
+        { en: "D. anxious (adj.): worried.", zh: "D. anxious（焦慮的）：不合文意。" }
+      ]},
+      { id: 16, q: "It is ________ to bring an umbrella when the sky looks dark and cloudy.", options: ["A. overweight", "B. jealous", "C. sensible", "D. gorgeous"], answer: 2, diff: "Medium", sec: 22, exp: [
+        { en: "A. overweight (adj.): too heavy.", zh: "A. overweight（超重的）：形容體重，不合文意。" },
+        { en: "B. jealous (adj.): envious.", zh: "B. jealous（妒忌的）：不合文意。" },
+        { en: "C. sensible (adj.): [Correct] showing good, practical judgment.", zh: "C. sensible（明智的）：【正確答案】天色陰暗時帶傘是明智之舉。" },
+        { en: "D. gorgeous (adj.): very attractive.", zh: "D. gorgeous（極美麗的）：不合文意。" }
+      ]},
+      { id: 17, q: "The children were very ________ to find out what was inside the locked wooden box.", options: ["A. overweight", "B. curious", "C. ordinary", "D. sensible"], answer: 1, diff: "Easy", sec: 15, exp: [
+        { en: "A. overweight (adj.): too heavy.", zh: "A. overweight（過重的）：與想知道內容無關。" },
+        { en: "B. curious (adj.): [Correct] eager to know or learn something.", zh: "B. curious（好奇的）：【正確答案】急切想知道木箱裡有什麼。" },
+        { en: "C. ordinary (adj.): usual.", zh: "C. ordinary（普通的）：不合語境。" },
+        { en: "D. sensible (adj.): practical.", zh: "D. sensible（明智的）：不合文意。" }
+      ]},
+      { id: 18, q: "It was very ________ of you to pay for all of our meals at the restaurant.", options: ["A. sensible", "B. generous", "C. jealous", "D. patient"], answer: 1, diff: "Easy", sec: 15, exp: [
+        { en: "A. sensible (adj.): wise and practical.", zh: "A. sensible（明智的）：請客主要體現大方。" },
+        { en: "B. generous (adj.): [Correct] willing to give money or help freely.", zh: "B. generous（慷慨的）：【正確答案】為大家付餐費非常慷慨。" },
+        { en: "C. jealous (adj.): envious.", zh: "C. jealous（妒忌的）：不合文意。" },
+        { en: "D. patient (adj.): able to wait calmly.", zh: "D. patient（有耐性的）：與請客無關。" }
+      ]},
+      { id: 19, q: "London is the ________ of the United Kingdom, where the government is based.", options: ["A. surface", "B. continent", "C. region", "D. capital"], answer: 3, diff: "Easy", sec: 15, exp: [
+        { en: "A. surface (n.): top layer.", zh: "A. surface（表面）：不合地理常識。" },
+        { en: "B. continent (n.): major landmass.", zh: "B. continent（大洲）：倫敦是城市非大洲。" },
+        { en: "C. region (n.): general area.", zh: "C. region（地區）：不夠準確。" },
+        { en: "D. capital (n.): [Correct] main city where a country's government sits.", zh: "D. capital（首都）：【正確答案】英國首都及政府所在地。" }
+      ]},
+      { id: 20, q: "The advertising team needs a ________ mind to come up with new ideas for the product campaign.", options: ["A. creative", "B. patient", "C. close", "D. sensible"], answer: 0, diff: "Easy", sec: 15, exp: [
+        { en: "A. creative (adj.): [Correct] able to produce new and original ideas.", zh: "A. creative（有創意的）：【正確答案】構思新點子需要創意。" },
+        { en: "B. patient (adj.): calm when waiting.", zh: "B. patient（有耐性的）：與想新點子無直接關聯。" },
+        { en: "C. close (adj.): near or intimate.", zh: "C. close（親近的）：不合文意。" },
+        { en: "D. sensible (adj.): practical.", zh: "D. sensible（實用的）：不強調原創點子。" }
+      ]},
+      { id: 21, q: "Teachers need to be very ________ when explaining difficult concepts to young learners.", options: ["A. honest", "B. patient", "C. sensible", "D. generous"], answer: 1, diff: "Easy", sec: 15, exp: [
+        { en: "A. honest (adj.): truthful.", zh: "A. honest（誠實的）：不合講解難題語境。" },
+        { en: "B. patient (adj.): [Correct] able to stay calm without getting annoyed.", zh: "B. patient（有耐性的）：【正確答案】向幼童講解難題需有耐性。" },
+        { en: "C. sensible (adj.): having good judgment.", zh: "C. sensible（明智的）：不如 patient 貼切。" },
+        { en: "D. generous (adj.): willing to give.", zh: "D. generous（慷慨的）：不合文意。" }
+      ]},
+      { id: 22, q: "It started to ________ with rain, so we got completely wet before reaching the bus stop.", options: ["A. cover", "B. protect", "C. pour", "D. breathe"], answer: 2, diff: "Hard", sec: 30, exp: [
+        { en: "A. cover (v.): to place over.", zh: "A. cover（覆蓋）：不與 with rain 搭配。" },
+        { en: "B. protect (v.): to keep safe.", zh: "B. protect（保護）：不合句意。" },
+        { en: "C. pour (v.): [Correct] to rain heavily ('pour with rain').", zh: "C. pour（傾盆而下）：【正確答案】pour with rain 指下傾盆大雨。" },
+        { en: "D. breathe (v.): to inhale and exhale.", zh: "D. breathe（呼吸）：不合文意。" }
+      ]},
+      { id: 23, q: "The dolphin is a highly intelligent ________ that lives in the ocean.", options: ["A. region", "B. creature", "C. population", "D. landscape"], answer: 1, diff: "Easy", sec: 15, exp: [
+        { en: "A. region (n.): an area.", zh: "A. region（地區）：海豚是動物非地區。" },
+        { en: "B. creature (n.): [Correct] a living animal or being.", zh: "B. creature（生物；動物）：【正確答案】生活在海洋的高智商生物。" },
+        { en: "C. population (n.): total inhabitants.", zh: "C. population（人口／種群數）：非單一海豚。" },
+        { en: "D. landscape (n.): scenery.", zh: "D. landscape（風景）：不合文意。" }
+      ]},
+      { id: 24, q: "Since my aunt lives next door, I spend a lot of free time playing with my ________.", options: ["A. creature", "B. widow", "C. cousin", "D. stepfather"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. creature (n.): an animal.", zh: "A. creature（動物）：不合邏輯。" },
+        { en: "B. widow (n.): a woman whose husband died.", zh: "B. widow（寡婦）：不合語境。" },
+        { en: "C. cousin (n.): [Correct] a child of one's aunt or uncle.", zh: "C. cousin（堂／表兄弟姊妹）：【正確答案】阿姨的孩子是表兄弟姊妹。" },
+        { en: "D. stepfather (n.): a mother's husband who is not biological father.", zh: "D. stepfather（繼父）：不合親屬關係。" }
+      ]},
+      { id: 25, q: "During the winter, thick snow will ________ the entire mountain range.", options: ["A. protect", "B. pour", "C. cover", "D. breathe"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. protect (v.): to keep safe.", zh: "A. protect（保護）：厚雪不會保護山脈。" },
+        { en: "B. pour (v.): to flow rapidly.", zh: "B. pour（傾倒）：多用於液體或雨。" },
+        { en: "C. cover (v.): [Correct] to lie over a surface.", zh: "C. cover（覆蓋）：【正確答案】厚雪覆蓋整座山脈。" },
+        { en: "D. breathe (v.): to take air in and out.", zh: "D. breathe（呼吸）：不合文意。" }
+      ]},
+      { id: 26, q: "The scientists are studying the rocky ________ of Mars using special robotic cameras.", options: ["A. climate", "B. creature", "C. capital", "D. surface"], answer: 3, diff: "Medium", sec: 22, exp: [
+        { en: "A. climate (n.): weather patterns.", zh: "A. climate（氣候）：不能用 rocky 形容。" },
+        { en: "B. creature (n.): a living animal.", zh: "B. creature（生物）：不合文意。" },
+        { en: "C. capital (n.): main government city.", zh: "C. capital（首都）：火星沒有首都。" },
+        { en: "D. surface (n.): [Correct] the outer or top layer.", zh: "D. surface（表面）：【正確答案】火星多岩石的表面。" }
+      ]},
+      { id: 27, q: "This ________ of the country is famous for producing high-quality wines.", options: ["A. continent", "B. landscape", "C. region", "D. population"], answer: 2, diff: "Medium", sec: 22, exp: [
+        { en: "A. continent (n.): a major landmass.", zh: "A. continent（大洲）：大洲大於國家。" },
+        { en: "B. landscape (n.): visual scenery.", zh: "B. landscape（風景）：風景不生產葡萄酒。" },
+        { en: "C. region (n.): [Correct] a specific area of a country.", zh: "C. region（地區；產區）：【正確答案】國家的葡萄酒產區。" },
+        { en: "D. population (n.): number of people.", zh: "D. population（人口）：不合句意。" }
+      ]},
+      { id: 28, q: "Despite the emergency, the captain remained completely ________ and kept everyone safe.", options: ["A. calm", "B. depressed", "C. anxious", "D. jealous"], answer: 0, diff: "Easy", sec: 15, exp: [
+        { en: "A. calm (adj.): [Correct] peaceful and not panicking.", zh: "A. calm（冷靜的）：【正確答案】緊急情況下保持冷靜。" },
+        { en: "B. depressed (adj.): very sad.", zh: "B. depressed（抑鬱的）：不合緊急應變語境。" },
+        { en: "C. anxious (adj.): worried or nervous.", zh: "C. anxious（焦慮的）：與鎮定相反。" },
+        { en: "D. jealous (adj.): envious.", zh: "D. jealous（妒忌的）：不合文意。" }
+      ]},
+      { id: 29, q: "I am lucky that I ________ all my classmates and have many friends here.", options: ["A. protect from", "B. pour with", "C. consist of", "D. get on well with"], answer: 3, diff: "Hard", sec: 30, exp: [
+        { en: "A. protect from (phr. v.): to keep safe from harm.", zh: "A. protect from（保護……免受）：不合交友語境。" },
+        { en: "B. pour with (phr. v.): to rain heavily.", zh: "B. pour with（下大雨）：只能搭配雨。" },
+        { en: "C. consist of (phr. v.): to be made up of.", zh: "C. consist of（由……組成）：不能用於同學關係。" },
+        { en: "D. get on well with (phr. v.): [Correct] to have a friendly relationship with someone.", zh: "D. get on well with（與……相處融洽）：【正確答案】與同學相處融洽故朋友多。" }
+      ]},
+      { id: 30, q: "The students were ________ by the complicated instructions on the exam paper.", options: ["A. calm", "B. cheerful", "C. confused", "D. talented"], answer: 2, diff: "Easy", sec: 15, exp: [
+        { en: "A. calm (adj.): relaxed.", zh: "A. calm（冷靜的）：複雜指示通常不會讓人冷靜。" },
+        { en: "B. cheerful (adj.): happy.", zh: "B. cheerful（開朗的）：不合考場遇到複雜指示。" },
+        { en: "C. confused (adj.): [Correct] unable to understand clearly.", zh: "C. confused（困惑的）：【正確答案】被複雜指示弄糊塗了。" },
+        { en: "D. talented (adj.): naturally skilled.", zh: "D. talented（有才華的）：不合文意。" }
+      ]}
+    ];
+
+    let queue = [];
+    let currentQ = null;
+    let timerId = null;
+    let timeLeft = 0;
+    let attemptsTotal = 0;
+    let startMs = 0;
+    let stats = {};
+
+    function startGame() {
+      queue = QUESTIONS.slice();
+      attemptsTotal = 0;
+      startMs = Date.now();
+      stats = {};
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        stats[QUESTIONS[i].id] = { attempts: 0, missed: false };
+      }
+      document.getElementById("start-screen").classList.add("hidden");
+      document.getElementById("summary-screen").classList.add("hidden");
+      document.getElementById("quiz-screen").classList.remove("hidden");
+      renderQuestion();
+    }
+
+    function updateCounts() {
+      const mastered = QUESTIONS.length - queue.length;
+      document.getElementById("mastered-num").textContent = String(mastered);
+      document.getElementById("rem-num").textContent = String(queue.length);
+    }
+
+    function renderQuestion() {
+      if (queue.length === 0) {
+        showSummary();
+        return;
+      }
+      updateCounts();
+      currentQ = queue[0];
+      document.getElementById("feedback-box").classList.add("hidden");
+
+      const retry = stats[currentQ.id].attempts > 0;
+      document.getElementById("q-label").textContent =
+        "Question " + currentQ.id + " of 30" + (retry ? " (Retry / 重試)" : "");
+      document.getElementById("q-diff").textContent = currentQ.diff + " • " + currentQ.sec + "s";
+      document.getElementById("q-text").textContent = currentQ.q;
+
+      const optBox = document.getElementById("options-box");
+      optBox.innerHTML = "";
+      for (let idx = 0; idx < currentQ.options.length; idx++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "opt-btn";
+        btn.textContent = currentQ.options[idx];
+        btn.addEventListener("click", function() {
+          chooseOption(idx);
+        });
+        optBox.appendChild(btn);
+      }
+
+      runTimer(currentQ.sec);
+    }
+
+    function runTimer(seconds) {
+      clearInterval(timerId);
+      timeLeft = seconds;
+      document.getElementById("timer-box").textContent = "Time: " + timeLeft + "s";
+      timerId = setInterval(function() {
+        timeLeft--;
+        document.getElementById("timer-box").textContent = "Time: " + timeLeft + "s";
+        if (timeLeft <= 0) {
+          clearInterval(timerId);
+          timeExpired();
+        }
+      }, 1000);
+    }
+
+    function chooseOption(idx) {
+      clearInterval(timerId);
+      attemptsTotal++;
+      stats[currentQ.id].attempts++;
+
+      const btns = document.querySelectorAll(".opt-btn");
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+      }
+
+      if (idx === currentQ.answer) {
+        btns[idx].classList.add("correct");
+        queue.shift();
+        updateCounts();
+        setTimeout(renderQuestion, 400);
+      } else {
+        stats[currentQ.id].missed = true;
+        btns[idx].classList.add("wrong");
+        btns[currentQ.answer].classList.add("correct");
+        const missedItem = queue.shift();
+        queue.push(missedItem);
+        updateCounts();
+        showFeedback("Incorrect / 答錯了 — Review all choices below:");
+      }
+    }
+
+    function timeExpired() {
+      attemptsTotal++;
+      stats[currentQ.id].attempts++;
+      stats[currentQ.id].missed = true;
+
+      const btns = document.querySelectorAll(".opt-btn");
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].disabled = true;
+      }
+      btns[currentQ.answer].classList.add("correct");
+      const expiredItem = queue.shift();
+      queue.push(expiredItem);
+      updateCounts();
+      showFeedback("Time's Up! / 時間到！ — Review all choices below:");
+    }
+
+    function showFeedback(title) {
+      document.getElementById("feedback-title").textContent = title;
+      const list = document.getElementById("exp-list");
+      list.innerHTML = "";
+      for (let i = 0; i < currentQ.exp.length; i++) {
+        const row = document.createElement("div");
+        row.className = "exp-item";
+        row.innerHTML = "<div>" + currentQ.exp[i].en + "</div><span class=\"exp-zh\">" + currentQ.exp[i].zh + "</span>";
+        list.appendChild(row);
+      }
+      document.getElementById("feedback-box").classList.remove("hidden");
+    }
+
+    function showSummary() {
+      clearInterval(timerId);
+      document.getElementById("quiz-screen").classList.add("hidden");
+      document.getElementById("summary-screen").classList.remove("hidden");
+
+      const secElapsed = Math.floor((Date.now() - startMs) / 1000);
+      const mins = Math.floor(secElapsed / 60);
+      const secs = secElapsed % 60;
+      const firstTry = QUESTIONS.filter(function(q) { return !stats[q.id].missed; }).length;
+
+      document.getElementById("sum-first").textContent = firstTry + " / 30";
+      document.getElementById("sum-attempts").textContent = String(attemptsTotal);
+      document.getElementById("sum-time").textContent = mins + "m " + secs + "s";
+
+      const missedList = QUESTIONS.filter(function(q) { return stats[q.id].missed; });
+      const area = document.getElementById("review-area");
+
+      if (missedList.length === 0) {
+        area.innerHTML = "<p style=\"margin-top:8px;\">Flawless! All 30 questions answered right on the first try. (全部 30 題首次作答即全對！)</p>";
+        return;
+      }
+
+      let html = "<table><thead><tr><th>#</th><th>Question</th><th>Answer</th><th>Attempts</th></tr></thead><tbody>";
+      for (let i = 0; i < missedList.length; i++) {
+        const item = missedList[i];
+        html += "<tr><td>Q" + item.id + "</td><td>" + item.q + "</td><td><strong>" + item.options[item.answer] + "</strong></td><td>" + stats[item.id].attempts + "</td></tr>";
+      }
+      html += "</tbody></table>";
+      area.innerHTML = html;
+    }
+
+    document.getElementById("start-btn").addEventListener("click", startGame);
+    document.getElementById("next-btn").addEventListener("click", renderQuestion);
+    document.getElementById("restart-btn").addEventListener("click", function() {
+      location.reload();
+    });
+  </script>
+</body>
+</html>
