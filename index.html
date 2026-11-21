@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>S5 English Vocabulary Revision (Units 5–13)</title>
+  <title>Vocabulary Revision (Units 5–13)</title>
   <style>
     :root {
       --bg: #ffffff;
@@ -24,13 +24,6 @@
       justify-content: center;
     }
     .container { width: 100%; max-width: 760px; }
-    header {
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 14px;
-      margin-bottom: 20px;
-    }
-    h1 { font-size: 1.3rem; font-weight: 700; }
-    .subtitle { font-size: 0.85rem; color: var(--muted); }
     .box { border: 1px solid var(--border); padding: 20px; margin-bottom: 20px; }
     .box ul { margin: 14px 0 18px 20px; }
     .box li { margin-bottom: 8px; }
@@ -117,20 +110,15 @@
 </head>
 <body>
   <div class="container">
-    <header>
-      <h1>S5 English Vocabulary Revision (Units 5–13)</h1>
-      <div class="subtitle">AI Mastery Trainer • Bilingual Explanations (EN / 繁體中文)</div>
-    </header>
-
-    <section id="start-screen" class="box">
-      <p><strong>Test Mastery Mode / 精熟練習模式</strong></p>
+    <section id="intro-screen" class="box">
+      <p><strong>Revision Guide / 練習導讀</strong></p>
       <ul>
-        <li><strong>Exact Order:</strong> All 30 questions appear in the exact order of the test paper. (題目與選項順序與測驗卷完全相同。)</li>
-        <li><strong>100% Mastery:</strong> You must answer every question correctly before the game ends. Missed items return later in the queue. (必須答對全部 30 題才會結束；答錯或超時會重新排隊再測。)</li>
-        <li><strong>Difficulty Timers:</strong> Easy = 15s, Medium = 22s, Hard = 30s. (依難度設有時限。)</li>
-        <li><strong>Bilingual Explanations:</strong> Errors show English and Chinese explanations for every option. (答錯時顯示所有選項中英雙語解析。)</li>
+        <li><strong>Mastery Completion:</strong> The session continues until every question is answered correctly; missed or timed-out items return later in the queue. (必須答對全部題目才會完成；答錯或逾時的題目會重新排隊再測。)</li>
+        <li><strong>Difficulty Timers:</strong> Each item has a countdown based on difficulty (Easy = 15s, Medium = 22s, Hard = 30s). (依難度設有時限：簡易 15 秒、中等 22 秒、進階 30 秒。)</li>
+        <li><strong>Bilingual Explanations:</strong> When an answer is incorrect or time runs out, English and Chinese explanations are shown for all choices. (答錯或時間到時，會顯示各選項的中英雙語解析。)</li>
+        <li><strong>End Summary:</strong> A summary report appears after all items are mastered. (完成所有題目後會顯示作答總結。)</li>
       </ul>
-      <button type="button" class="btn-main" id="start-btn">Start Revision / 開始練習</button>
+      <button type="button" class="btn-main" id="start-btn">Start / 開始</button>
     </section>
 
     <section id="quiz-screen" class="hidden">
@@ -142,7 +130,7 @@
 
       <div class="box">
         <div class="q-meta">
-          <span id="q-label">Question 1 of 30</span>
+          <span id="q-label">1 / 30</span>
           <span class="badge" id="q-diff">Easy • 15s</span>
         </div>
         <div class="q-text" id="q-text"></div>
@@ -152,29 +140,29 @@
       <div id="feedback-box" class="feedback hidden">
         <div class="feedback-title" id="feedback-title"></div>
         <div id="exp-list"></div>
-        <button type="button" class="btn-main" id="next-btn">Next Question / 下一題</button>
+        <button type="button" class="btn-main" id="next-btn">Next / 下一題</button>
       </div>
     </section>
 
     <section id="summary-screen" class="hidden">
-      <h2 style="margin-bottom: 14px;">Revision Summary / 練習總結</h2>
+      <h2 style="margin-bottom: 14px;">Summary / 總結</h2>
       <div class="stats">
         <div class="stat">
           <div class="stat-val" id="sum-first">0 / 30</div>
-          <div class="stat-lbl">First-Try Accuracy / 首次答對</div>
+          <div class="stat-lbl">First-Try / 首次答對</div>
         </div>
         <div class="stat">
           <div class="stat-val" id="sum-attempts">30</div>
-          <div class="stat-lbl">Total Attempts / 總作答次數</div>
+          <div class="stat-lbl">Attempts / 作答次數</div>
         </div>
         <div class="stat">
           <div class="stat-val" id="sum-time">0m 0s</div>
-          <div class="stat-lbl">Total Time / 總用時</div>
+          <div class="stat-lbl">Time / 用時</div>
         </div>
       </div>
-      <p style="font-weight: 600;">Items Requiring Review / 需要重溫的題目：</p>
+      <p style="font-weight: 600;">Review / 重溫題目：</p>
       <div id="review-area"></div>
-      <button type="button" class="btn-main" id="restart-btn">Restart Practice / 重新練習</button>
+      <button type="button" class="btn-main" id="restart-btn">Restart / 重新開始</button>
     </section>
   </div>
 
@@ -378,7 +366,7 @@
       for (let i = 0; i < QUESTIONS.length; i++) {
         stats[QUESTIONS[i].id] = { attempts: 0, missed: false };
       }
-      document.getElementById("start-screen").classList.add("hidden");
+      document.getElementById("intro-screen").classList.add("hidden");
       document.getElementById("summary-screen").classList.add("hidden");
       document.getElementById("quiz-screen").classList.remove("hidden");
       renderQuestion();
@@ -401,7 +389,7 @@
 
       const retry = stats[currentQ.id].attempts > 0;
       document.getElementById("q-label").textContent =
-        "Question " + currentQ.id + " of 30" + (retry ? " (Retry / 重試)" : "");
+        String(currentQ.id) + " / 30" + (retry ? " (Retry)" : "");
       document.getElementById("q-diff").textContent = currentQ.diff + " • " + currentQ.sec + "s";
       document.getElementById("q-text").textContent = currentQ.q;
 
@@ -449,7 +437,7 @@
         btns[idx].classList.add("correct");
         queue.shift();
         updateCounts();
-        setTimeout(renderQuestion, 400);
+        setTimeout(renderQuestion, 350);
       } else {
         stats[currentQ.id].missed = true;
         btns[idx].classList.add("wrong");
@@ -457,7 +445,7 @@
         const missedItem = queue.shift();
         queue.push(missedItem);
         updateCounts();
-        showFeedback("Incorrect / 答錯了 — Review all choices below:");
+        showFeedback("Incorrect / 答錯了");
       }
     }
 
@@ -474,7 +462,7 @@
       const expiredItem = queue.shift();
       queue.push(expiredItem);
       updateCounts();
-      showFeedback("Time's Up! / 時間到！ — Review all choices below:");
+      showFeedback("Time's Up / 時間到");
     }
 
     function showFeedback(title) {
@@ -508,14 +496,14 @@
       const area = document.getElementById("review-area");
 
       if (missedList.length === 0) {
-        area.innerHTML = "<p style=\"margin-top:8px;\">Flawless! All 30 questions answered right on the first try. (全部 30 題首次作答即全對！)</p>";
+        area.innerHTML = "<p style=\"margin-top:8px;\">100% First-Try Accuracy. (全部 30 題首次作答即全對。)</p>";
         return;
       }
 
       let html = "<table><thead><tr><th>#</th><th>Question</th><th>Answer</th><th>Attempts</th></tr></thead><tbody>";
       for (let i = 0; i < missedList.length; i++) {
         const item = missedList[i];
-        html += "<tr><td>Q" + item.id + "</td><td>" + item.q + "</td><td><strong>" + item.options[item.answer] + "</strong></td><td>" + stats[item.id].attempts + "</td></tr>";
+        html += "<tr><td>" + item.id + "</td><td>" + item.q + "</td><td><strong>" + item.options[item.answer] + "</strong></td><td>" + stats[item.id].attempts + "</td></tr>";
       }
       html += "</tbody></table>";
       area.innerHTML = html;
