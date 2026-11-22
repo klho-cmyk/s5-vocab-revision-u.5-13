@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en-HK">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<title>Vocabulary Revision (Units 5–13)</title>
+<style>
+  :root {
+    color-scheme: light dark;
+
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --surface-2: #f2f2f2;
+    --ink: #1e1e1e;
+    --ink-2: #595959;
+    --line: #e3e3e3;
+    --line-strong: #c9c9c9;
+
+    --accent: #1e1b4b;
+    --accent-on: #ffffff;
+    --accent-soft: #ecebf3;
+
+    --ok: #1c6b45;
+    --ok-soft: #e9f3ee;
+    --err: #a8332a;
+    --err-soft: #fbeceb;
+    --warn: #7d5600;
+    --warn-soft: #f7f0dd;
+
+    --r: 4px;
+    --measure: 68ch;
+    --gap: clamp(18px, 3vw, 30px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e1e;
+      --surface: #262626;
+      --surface-2: #2e2e2e;
+      --ink: #ededed;
+      --ink-2: #b6b6b6;
+      --line: #333333;
+      --line-strong: #4a4a4a;
+
+      --accent: #e8a87c;
+      --accent-on: #241a12;
+      --accent-soft: #342a21;
+
+      --ok: #7fd6a8;
+      --ok-soft: #20322a;
+      --err: #ff9d90;
+      --err-soft: #3a2320;
+      --warn: #e2bd7c;
+      --warn-soft: #32281a;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--bg);
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+      "PingFang HK", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    caret-color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--line-strong); border: 2px solid var(--bg); border-radius: 0; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--ink-2); }
+  }
+
+  ::selection { background: var(--accent); color: var(--accent-on); }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .app {
+    width: min(100% - 36px, 760px);
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 64px) 0 88px;
+  }
+
+  [hidden] { display: none !important; }
+
+  .screen { display: none; }
+  .screen.is-active { display: block; animation: fade .22s ease-out both; }
+
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* ---------------- type ---------------- */
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.65rem, 4.6vw, 2.15rem);
+    font-weight: 700;
+    line-height: 1.16;
+    letter-spacing: -0.031em;
+    text-wrap: balance;
+    max-width: 26ch;
+  }
+
+  .lede {
+    margin: 12px 0 0;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    max-width: var(--measure);
+  }
+
+  /* ---------------- buttons ---------------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border: 1px solid var(--accent);
+    border-radius: var(--r);
+    background: var(--accent);
+    color: var(--accent-on);
+    font: inherit;
+    font-weight: 650;
+    letter-spacing: -0.005em;
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+  }
+
+  .btn:hover { background: transparent; color: var(--accent); }
+  .btn:active { transform: translateY(1px); }
+
+  /* ---------------- intro ---------------- */
+
+  .intro-head { padding-bottom: var(--gap); border-bottom: 1px solid var(--line); }
+
+  .rules { margin: 0; padding: 0; }
+
+  .rule {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rule dt {
+    font-size: 0.95rem;
+    font-weight: 680;
+    letter-spacing: -0.008em;
+  }
+
+  .rule dd {
+    margin: 4px 0 0;
+    color: var(--ink-2);
+    font-size: 0.92rem;
+    max-width: var(--measure);
+  }
+
+  .rule dd .zh { display: block; margin-top: 2px; font-size: 0.89rem; }
+
+  .intro-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 20px;
+    padding-top: var(--gap);
+  }
+
+  .foot-note { margin: 0; color: var(--ink-2); font-size: 0.86rem; }
+
+  /* ---------------- hud ---------------- */
+
+  .bar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0 10px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bar-count { margin: 0; font-size: 0.86rem; color: var(--ink-2); white-space: nowrap; }
+  .bar-count b { color: var(--ink); font-weight: 680; }
+
+  .prog { height: 3px; background: var(--surface-2); overflow: hidden; }
+
+  .prog-fill {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: var(--accent);
+    transition: width .35s cubic-bezier(.22, .68, .36, 1);
+  }
+
+  .bar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.86rem;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  .clock {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 680;
+    color: var(--ink);
+    transition: color .18s ease, opacity .18s ease;
+  }
+
+  .clock::before { content: ""; width: 6px; height: 6px; background: var(--accent); transition: background .18s ease; }
+
+  .clock.is-low { color: var(--err); }
+  .clock.is-low::before { background: var(--err); }
+  .clock.is-paused::before { background: var(--ink-2); }
+  .clock.is-stopped { opacity: .42; }
+
+  /* ---------------- question ---------------- */
+
+  .q { padding-top: clamp(20px, 3.4vw, 30px); }
+
+  .q-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+    color: var(--ink-2);
+  }
+
+  .q-meta .item { color: var(--ink); font-weight: 650; }
+
+  .tag {
+    padding: 2px 8px;
+    border: 1px solid var(--line-strong);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    border-radius: 2px;
+  }
+
+  .tag-retry { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+
+  .time-rule { height: 2px; background: var(--surface-2); margin-bottom: clamp(18px, 3vw, 26px); }
+
+  .time-fill { display: block; height: 100%; width: 100%; background: var(--accent); transition: background .25s ease; }
+  .time-fill.is-low { background: var(--err); }
+
+  h2.q-text {
+    margin: 0;
+    font-size: clamp(1.12rem, 2.9vw, 1.34rem);
+    font-weight: 640;
+    line-height: 1.55;
+    letter-spacing: -0.014em;
+    text-wrap: pretty;
+    max-width: 56ch;
+  }
+
+  .options { display: grid; gap: 8px; margin-top: clamp(20px, 3.2vw, 28px); }
+
+  .opt {
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr) 18px;
+    align-items: center;
+    gap: 14px;
+    min-height: 54px;
+    padding: 12px 14px;
+    text-align: left;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r);
+    cursor: pointer;
+    transition: border-color .14s ease, background .14s ease;
+  }
+
+  .opt:hover:not(:disabled) { border-color: var(--ink); background: var(--surface); }
+  .opt:disabled { cursor: default; }
+
+  .opt .letter {
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink-2);
+  }
+
+  .opt .txt { line-height: 1.45; }
+
+  .opt .mark { display: grid; place-items: center; width: 18px; height: 18px; }
+  .opt .mark svg { display: block; }
+
+  .opt.is-correct { border-color: var(--ok); background: var(--ok-soft); }
+  .opt.is-correct .letter { border-color: var(--ok); color: var(--ok); }
+  .opt.is-correct .mark { color: var(--ok); }
+
+  .opt.is-wrong { border-color: var(--err); background: var(--err-soft); }
+  .opt.is-wrong .letter { border-color: var(--err); color: var(--err); }
+  .opt.is-wrong .mark { color: var(--err); }
+
+  .opt.is-dim { opacity: .5; }
+
+  .hint { display: none; margin: 14px 0 0; font-size: 0.8rem; color: var(--ink-2); }
+
+  @media (hover: hover) and (pointer: fine) { .hint { display: block; } }
+
+  kbd {
+    display: inline-block;
+    min-width: 18px;
+    padding: 0 4px;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    background: var(--surface);
+    font: inherit;
+    font-size: 0.75rem;
+    font-weight: 650;
+    text-align: center;
+    color: var(--ink-2);
+  }
+
+  /* ---------------- feedback ---------------- */
+
+  .feedback {
+    margin-top: 22px;
+    padding: 18px 18px 20px;
+    background: var(--err-soft);
+    border: 1px solid var(--err);
+    border-radius: var(--r);
+  }
+
+  .feedback.is-expired { background: var(--warn-soft); border-color: var(--warn); }
+
+  .feedback-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px 16px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    border-bottom: 1px solid color-mix(in srgb, var(--err) 28%, transparent);
+  }
+
+  .feedback.is-expired .feedback-head { border-bottom-color: color-mix(in srgb, var(--warn) 32%, transparent); }
+
+  .feedback-title { font-size: 0.98rem; font-weight: 700; color: var(--err); }
+  .feedback.is-expired .feedback-title { color: var(--warn); }
+
+  .feedback-note { font-size: 0.84rem; color: var(--ink); }
+
+  .exp-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+
+  .exp {
+    display: grid;
+    grid-template-columns: 6px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+  }
+
+  .exp::before { content: ""; width: 6px; height: 6px; margin-top: 7px; background: var(--line-strong); }
+  .exp.is-key::before { background: var(--ok); }
+
+  .exp-en { margin: 0; font-size: 0.92rem; line-height: 1.5; }
+  .exp-zh { margin: 2px 0 0; font-size: 0.86rem; line-height: 1.55; color: var(--ink-2); }
+
+  .feedback .btn { margin-top: 18px; }
+
+  /* ---------------- summary ---------------- */
+
+  .summary-head { padding-bottom: var(--gap); border-bottom: 1px solid var(--line); }
+
+  .figures {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .figure {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    padding: 20px 0 22px 20px;
+  }
+
+  .figure:first-child { padding-left: 0; }
+
+  .figure + .figure::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18px;
+    bottom: 20px;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .figure dt { font-size: 0.8rem; color: var(--ink-2); }
+  .figure dd {
+    margin: 0 0 2px;
+    font-size: clamp(1.35rem, 3.6vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  @media (max-width: 520px) {
+    .figures { grid-template-columns: 1fr; }
+    .figure {
+      position: relative;
+      flex-direction: row-reverse;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 0;
+      border-left: 0;
+    }
+    .figure + .figure::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      width: auto;
+      height: 1px;
+      background: var(--line);
+    }
+  }
+
+  .review-label { margin: 26px 0 0; font-size: 0.86rem; font-weight: 650; color: var(--ink-2); }
+
+  .review { display: grid; }
+
+  .review-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
+
+  .review-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: var(--ink-2);
+  }
+
+  .review-id { color: var(--ink); font-weight: 700; }
+
+  .review-q { margin: 0 0 12px; font-size: 0.98rem; line-height: 1.55; max-width: var(--measure); }
+
+  .kv { margin: 0; display: grid; gap: 4px; }
+  .kv-row { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+  .kv dt { font-size: 0.82rem; color: var(--ink-2); }
+  .kv dd { margin: 0; font-size: 0.92rem; font-weight: 650; }
+  .kv-row.is-err dd { color: var(--err); }
+  .kv-row.is-ok dd { color: var(--ok); }
+
+  @media (max-width: 520px) {
+    .kv-row { grid-template-columns: 1fr; gap: 1px; }
+  }
+
+  .exp-toggle { margin-top: 14px; }
+
+  .exp-toggle summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 650;
+    color: var(--accent);
+    list-style: none;
+  }
+
+  .exp-toggle summary::-webkit-details-marker { display: none; }
+
+  .exp-toggle summary::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform .16s ease;
+  }
+
+  .exp-toggle[open] summary::before { transform: rotate(45deg); }
+
+  .exp-toggle .exp-list { margin-top: 14px; }
+
+  .perfect {
+    margin: 18px 0 0;
+    padding: 16px 18px;
+    border: 1px solid var(--ok);
+    background: var(--ok-soft);
+    border-radius: var(--r);
+    color: var(--ok);
+    font-weight: 650;
+    font-size: 0.92rem;
+  }
+
+  .summary-actions { margin-top: 28px; }
+
+  @media (max-width: 420px) {
+    .intro-foot .btn, .summary-actions .btn { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .screen.is-active { animation: none; }
+    .prog-fill, .btn, .opt, .clock, .time-fill, .exp-toggle summary::before { transition: none; }
+    .btn:active { transform: none; }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app" data-view="intro">
+  <p class="sr-only" id="live" role="status" aria-live="polite"></p>
+
+  <!-- ================= INTRO ================= -->
+  <section class="screen is-active" id="intro-screen" aria-labelledby="page-title">
+    <header class="intro-head">
+      <h1 id="page-title">Vocabulary Revision (Units 5–13)</h1>
+      <p class="lede" id="intro-meta"></p>
+    </header>
+
+    <h2 class="sr-only">Revision Guide / 練習導讀</h2>
+    <dl class="rules" id="guide-list"></dl>
+
+    <div class="intro-foot">
+      <button type="button" class="btn" id="start-btn">Start / 開始</button>
+      <p class="foot-note" id="intro-note"></p>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section class="screen" id="quiz-screen" aria-label="Quiz">
+    <h1 class="sr-only">Vocabulary Revision (Units 5–13)</h1>
+    <div class="bar">
+      <p class="bar-count"><b id="mastered-num">0</b> / <span id="total-num">30</span> mastered</p>
+      <div class="prog" id="prog" role="progressbar" aria-valuemin="0" aria-valuemax="30" aria-valuenow="0" aria-label="Mastered">
+        <span class="prog-fill" id="prog-fill"></span>
+      </div>
+      <div class="bar-right">
+        <span><span id="rem-num">30</span> left</span>
+        <span class="clock" id="timer-box" aria-hidden="true">15s</span>
+      </div>
+    </div>
+
+    <article class="q">
+      <div class="time-rule" aria-hidden="true"><span class="time-fill" id="timer-fill"></span></div>
+      <div class="q-meta">
+        <span class="item" id="q-label">Item 1 of 30</span>
+        <span class="tag" id="q-diff">Easy</span>
+        <span class="tag" id="q-sec">15s</span>
+        <span class="tag tag-retry" id="q-retry" hidden>Retry / 重做</span>
+      </div>
+      <h2 class="q-text" id="q-text"></h2>
+      <div class="options" id="options-box" role="group" aria-labelledby="q-text"></div>
+      <p class="hint">Press <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>Enter</kbd> for the next item.</p>
+    </article>
+
+    <div class="feedback" id="feedback-box" hidden>
+      <div class="feedback-head">
+        <span class="feedback-title" id="feedback-title"></span>
+        <span class="feedback-note" id="feedback-note"></span>
+      </div>
+      <ol class="exp-list" id="exp-list"></ol>
+      <button type="button" class="btn" id="next-btn">Next / 下一題</button>
+    </div>
+  </section>
+
+  <!-- ================= SUMMARY ================= -->
+  <section class="screen" id="summary-screen" aria-labelledby="summary-title">
+    <header class="summary-head">
+      <h1 id="summary-title">Summary / 總結</h1>
+      <p class="lede">Vocabulary Revision (Units 5–13)</p>
+    </header>
+
+    <dl class="figures">
+      <div class="figure">
+        <dt>First-Try / 首次答對</dt>
+        <dd id="sum-first">0 / 30</dd>
+      </div>
+      <div class="figure">
+        <dt>Attempts / 作答次數</dt>
+        <dd id="sum-attempts">0</dd>
+      </div>
+      <div class="figure">
+        <dt>Time / 用時</dt>
+        <dd id="sum-time">0m 0s</dd>
+      </div>
+    </dl>
+
+    <p class="review-label">Review / 重溫題目：</p>
+    <div class="review" id="review-area"></div>
+
+    <div class="summary-actions">
+      <button type="button" class="btn" id="restart-btn">Restart / 重新開始</button>
+    </div>
+  </section>
+</div>
+
+<script>
+  "use strict";
+
+  const QUESTIONS = [
+  { id: 1, q: "After practicing her presentation many times, she felt ________ that she would do well.", options: ["A. depressed", "B. jealous", "C. confident", "D. confused"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. depressed (adj.): very sad and without hope.", zh: "A. depressed（抑鬱的；沮喪的）：與「練習多次後覺得表現好」不符。" },
+    { en: "B. jealous (adj.): unhappy because someone has something you want.", zh: "B. jealous（妒忌的）：與句意無關。" },
+    { en: "C. confident (adj.): [Correct] feeling sure about your own ability to do well.", zh: "C. confident（有信心的）：【正確答案】對自己表現有把握。" },
+    { en: "D. confused (adj.): unable to think clearly or understand.", zh: "D. confused（困惑的）：與多次練習後的狀態相反。" }
+  ]},
+  { id: 2, q: "When you apply for a passport, you must state your ________ on the official form.", options: ["A. appearance", "B. continent", "C. nationality", "D. landscape"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. appearance (n.): how someone or something looks.", zh: "A. appearance（外貌）：申請護照表格不填外貌。" },
+    { en: "B. continent (n.): a large landmass such as Asia.", zh: "B. continent（大洲）：非個人資料。" },
+    { en: "C. nationality (n.): [Correct] legal status of belonging to a nation.", zh: "C. nationality（國籍）：【正確答案】申請護照必須填寫國籍。" },
+    { en: "D. landscape (n.): scenery across a large area of land.", zh: "D. landscape（風景）：與表格無關。" }
+  ]},
+  { id: 3, q: "After running the marathon, he found it quite difficult to ________ normally.", options: ["A. pour", "B. nod", "C. cover", "D. breathe"], answer: 3, diff: "Easy", sec: 15, exp: [
+    { en: "A. pour (v.): to flow in a stream.", zh: "A. pour（傾倒）：不合文意。" },
+    { en: "B. nod (v.): to move the head up and down.", zh: "B. nod（點頭）：不合文意。" },
+    { en: "C. cover (v.): to put something over another thing.", zh: "C. cover（覆蓋）：不合邏輯。" },
+    { en: "D. breathe (v.): [Correct] to take air into and out of the lungs.", zh: "D. breathe（呼吸）：【正確答案】跑完馬拉松後氣喘，難正常呼吸。" }
+  ]},
+  { id: 4, q: "The doctor advised him to eat healthier food and exercise more because he was slightly ________.", options: ["A. sensible", "B. overweight", "C. generous", "D. athletic"], answer: 1, diff: "Easy", sec: 15, exp: [
+    { en: "A. sensible (adj.): showing good judgment.", zh: "A. sensible（明智的）：非減肥原因。" },
+    { en: "B. overweight (adj.): [Correct] heavier than is healthy.", zh: "B. overweight（超重的）：【正確答案】體重過重故需健康飲食與運動。" },
+    { en: "C. generous (adj.): willing to give freely.", zh: "C. generous（慷慨的）：與體重無關。" },
+    { en: "D. athletic (adj.): physically strong and fit.", zh: "D. athletic（健壯的）：與文意相反。" }
+  ]},
+  { id: 5, q: "We had to stay indoors because there was a loud ________ with lightning and heavy rain.", options: ["A. shower", "B. climate", "C. thunderstorm", "D. continent"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. shower (n.): a brief period of rain.", zh: "A. shower（陣雨）：通常無巨響與閃電。" },
+    { en: "B. climate (n.): long-term regional weather patterns.", zh: "B. climate（氣候）：非單次天氣現象。" },
+    { en: "C. thunderstorm (n.): [Correct] a storm with thunder, lightning, and rain.", zh: "C. thunderstorm（雷暴）：【正確答案】伴隨雷聲、閃電與大雨的風暴。" },
+    { en: "D. continent (n.): a major landmass.", zh: "D. continent（大洲）：與天氣無關。" }
+  ]},
+  { id: 6, q: "We must take action to ________ the natural environment from pollution.", options: ["A. contrast", "B. breathe", "C. protect", "D. yawn"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. contrast (v.): to compare differences.", zh: "A. contrast（對比）：不合文意。" },
+    { en: "B. breathe (v.): to inhale and exhale.", zh: "B. breathe（呼吸）：無法與環境搭配。" },
+    { en: "C. protect (v.): [Correct] to keep safe from harm ('protect... from...').", zh: "C. protect（保護）：【正確答案】保護環境免受污染。" },
+    { en: "D. yawn (v.): to open the mouth wide when tired.", zh: "D. yawn（打呵欠）：不合邏輯。" }
+  ]},
+  { id: 7, q: "They were deeply ________ when the outdoor concert was cancelled because of the storm.", options: ["A. confident", "B. confused", "C. depressed", "D. disappointed"], answer: 3, diff: "Medium", sec: 22, exp: [
+    { en: "A. confident (adj.): feeling sure of oneself.", zh: "A. confident（有信心的）：不符活動取消心情。" },
+    { en: "B. confused (adj.): unable to understand clearly.", zh: "B. confused（困惑的）：取消原因已明確寫出。" },
+    { en: "C. depressed (adj.): severe, long-term sadness.", zh: "C. depressed（抑鬱的）：形容取消活動語氣過重。" },
+    { en: "D. disappointed (adj.): [Correct] sad because hoped-for plans did not happen.", zh: "D. disappointed（失望的）：【正確答案】期待的演唱會取消而感到失望。" }
+  ]},
+  { id: 8, q: "She has a great ________; she always makes us laugh with her funny jokes.", options: ["A. appearance", "B. relationship", "C. sense of humour", "D. mood"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. appearance (n.): outward look.", zh: "A. appearance（外貌）：與講笑話無關。" },
+    { en: "B. relationship (n.): connection between people.", zh: "B. relationship（關係）：不合文意。" },
+    { en: "C. sense of humour (n. phr.): [Correct] ability to find things funny or make people laugh.", zh: "C. sense of humour（幽默感）：【正確答案】用笑話逗人笑的能力。" },
+    { en: "D. mood (n.): how someone feels at a time.", zh: "D. mood（心情）：一時情緒。" }
+  ]},
+  { id: 9, q: "There is a sharp ________ between the hot, sunny days and the freezing cold nights in the desert.", options: ["A. contrast", "B. appearance", "C. region", "D. landscape"], answer: 0, diff: "Medium", sec: 22, exp: [
+    { en: "A. contrast (n.): [Correct] a clear difference between two things.", zh: "A. contrast（對比；反差）：【正確答案】沙漠日夜溫差形成明顯對比。" },
+    { en: "B. appearance (n.): outward look.", zh: "B. appearance（外觀）：不能形容溫差。" },
+    { en: "C. region (n.): a large area.", zh: "C. region（地區）：不合句意。" },
+    { en: "D. landscape (n.): scenery of land.", zh: "D. landscape（風景）：不合文意。" }
+  ]},
+  { id: 10, q: "Even on rainy days, her positive attitude and ________ smile brighten up the classroom.", options: ["A. jealous", "B. confused", "C. cheerful", "D. anxious"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. jealous (adj.): envious of others.", zh: "A. jealous（妒忌的）：與積極態度矛盾。" },
+    { en: "B. confused (adj.): puzzled.", zh: "B. confused（困惑的）：無法照亮課室。" },
+    { en: "C. cheerful (adj.): [Correct] noticeably happy and optimistic.", zh: "C. cheerful（開朗的）：【正確答案】開朗笑容與積極態度相呼應。" },
+    { en: "D. anxious (adj.): worried or nervous.", zh: "D. anxious（焦慮的）：不合文意。" }
+  ]},
+  { id: 11, q: "The artist painted a beautiful picture of the mountain ________.", options: ["A. climate", "B. appearance", "C. landscape", "D. surface"], answer: 2, diff: "Medium", sec: 22, exp: [
+    { en: "A. climate (n.): long-term weather.", zh: "A. climate（氣候）：無法直接描繪。" },
+    { en: "B. appearance (n.): how a person or object looks.", zh: "B. appearance（外貌）：不合山景繪畫語境。" },
+    { en: "C. landscape (n.): [Correct] natural scenery of an area of land.", zh: "C. landscape（風景；山水）：【正確答案】mountain landscape 指山景。" },
+    { en: "D. surface (n.): outer layer.", zh: "D. surface（表面）：不合文意。" }
+  ]},
+  { id: 12, q: "He felt a bit ________ when his brother got a brand new computer for his birthday.", options: ["A. jealous", "B. honest", "C. confident", "D. generous"], answer: 0, diff: "Easy", sec: 15, exp: [
+    { en: "A. jealous (adj.): [Correct] envious of something someone else has.", zh: "A. jealous（妒忌的）：【正確答案】看到哥哥收到新電腦感到妒忌。" },
+    { en: "B. honest (adj.): truthful.", zh: "B. honest（誠實的）：與文意無關。" },
+    { en: "C. confident (adj.): self-assured.", zh: "C. confident（自信的）：不合語境。" },
+    { en: "D. generous (adj.): willing to give.", zh: "D. generous（慷慨的）：不合文意。" }
+  ]},
+  { id: 13, q: "Many species of wild animals are now ________ due to habitat loss.", options: ["A. endangered", "B. rare", "C. freezing", "D. humid"], answer: 0, diff: "Medium", sec: 22, exp: [
+    { en: "A. endangered (adj.): [Correct] at serious risk of extinction.", zh: "A. endangered（瀕臨絕種的）：【正確答案】棲息地喪失導致瀕危。" },
+    { en: "B. rare (adj.): uncommon.", zh: "B. rare（稀有的）：不如 endangered 準確表達滅絕危機。" },
+    { en: "C. freezing (adj.): extremely cold.", zh: "C. freezing（冰冷的）：形容溫度，不合文意。" },
+    { en: "D. humid (adj.): warm and damp.", zh: "D. humid（潮濕的）：形容天氣，不合文意。" }
+  ]},
+  { id: 14, q: "The weather in summer is often very hot and ________, making everyone sweat.", options: ["A. mild", "B. freezing", "C. thick", "D. humid"], answer: 3, diff: "Easy", sec: 15, exp: [
+    { en: "A. mild (adj.): warm and pleasant.", zh: "A. mild（溫和的）：不會令人大汗淋漓。" },
+    { en: "B. freezing (adj.): extremely cold.", zh: "B. freezing（冰冷的）：與炎熱夏天矛盾。" },
+    { en: "C. thick (adj.): dense (used for fog/snow, not weather).", zh: "C. thick（濃密的）：不可直接形容天氣。" },
+    { en: "D. humid (adj.): [Correct] containing much water vapour in the air.", zh: "D. humid（潮濕的）：【正確答案】又熱又潮濕使人流汗。" }
+  ]},
+  { id: 15, q: "He is an exceptionally ________ musician who can play three different instruments perfectly.", options: ["A. reliable", "B. ordinary", "C. talented", "D. anxious"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. reliable (adj.): trustworthy.", zh: "A. reliable（可靠的）：無法體現樂器天賦。" },
+    { en: "B. ordinary (adj.): normal and unremarkable.", zh: "B. ordinary（普通的）：與精通三種樂器相反。" },
+    { en: "C. talented (adj.): [Correct] having natural ability to do something well.", zh: "C. talented（有才華的）：【正確答案】極具音樂天賦。" },
+    { en: "D. anxious (adj.): worried.", zh: "D. anxious（焦慮的）：不合文意。" }
+  ]},
+  { id: 16, q: "It is ________ to bring an umbrella when the sky looks dark and cloudy.", options: ["A. overweight", "B. jealous", "C. sensible", "D. gorgeous"], answer: 2, diff: "Medium", sec: 22, exp: [
+    { en: "A. overweight (adj.): too heavy.", zh: "A. overweight（超重的）：形容體重，不合文意。" },
+    { en: "B. jealous (adj.): envious.", zh: "B. jealous（妒忌的）：不合文意。" },
+    { en: "C. sensible (adj.): [Correct] showing good, practical judgment.", zh: "C. sensible（明智的）：【正確答案】天色陰暗時帶傘是明智之舉。" },
+    { en: "D. gorgeous (adj.): very attractive.", zh: "D. gorgeous（極美麗的）：不合文意。" }
+  ]},
+  { id: 17, q: "The children were very ________ to find out what was inside the locked wooden box.", options: ["A. overweight", "B. curious", "C. ordinary", "D. sensible"], answer: 1, diff: "Easy", sec: 15, exp: [
+    { en: "A. overweight (adj.): too heavy.", zh: "A. overweight（過重的）：與想知道內容無關。" },
+    { en: "B. curious (adj.): [Correct] eager to know or learn something.", zh: "B. curious（好奇的）：【正確答案】急切想知道木箱裡有什麼。" },
+    { en: "C. ordinary (adj.): usual.", zh: "C. ordinary（普通的）：不合語境。" },
+    { en: "D. sensible (adj.): practical.", zh: "D. sensible（明智的）：不合文意。" }
+  ]},
+  { id: 18, q: "It was very ________ of you to pay for all of our meals at the restaurant.", options: ["A. sensible", "B. generous", "C. jealous", "D. patient"], answer: 1, diff: "Easy", sec: 15, exp: [
+    { en: "A. sensible (adj.): wise and practical.", zh: "A. sensible（明智的）：請客主要體現大方。" },
+    { en: "B. generous (adj.): [Correct] willing to give money or help freely.", zh: "B. generous（慷慨的）：【正確答案】為大家付餐費非常慷慨。" },
+    { en: "C. jealous (adj.): envious.", zh: "C. jealous（妒忌的）：不合文意。" },
+    { en: "D. patient (adj.): able to wait calmly.", zh: "D. patient（有耐性的）：與請客無關。" }
+  ]},
+  { id: 19, q: "London is the ________ of the United Kingdom, where the government is based.", options: ["A. surface", "B. continent", "C. region", "D. capital"], answer: 3, diff: "Easy", sec: 15, exp: [
+    { en: "A. surface (n.): top layer.", zh: "A. surface（表面）：不合地理常識。" },
+    { en: "B. continent (n.): major landmass.", zh: "B. continent（大洲）：倫敦是城市非大洲。" },
+    { en: "C. region (n.): general area.", zh: "C. region（地區）：不夠準確。" },
+    { en: "D. capital (n.): [Correct] main city where a country's government sits.", zh: "D. capital（首都）：【正確答案】英國首都及政府所在地。" }
+  ]},
+  { id: 20, q: "The advertising team needs a ________ mind to come up with new ideas for the product campaign.", options: ["A. creative", "B. patient", "C. close", "D. sensible"], answer: 0, diff: "Easy", sec: 15, exp: [
+    { en: "A. creative (adj.): [Correct] able to produce new and original ideas.", zh: "A. creative（有創意的）：【正確答案】構思新點子需要創意。" },
+    { en: "B. patient (adj.): calm when waiting.", zh: "B. patient（有耐性的）：與想新點子無直接關聯。" },
+    { en: "C. close (adj.): near or intimate.", zh: "C. close（親近的）：不合文意。" },
+    { en: "D. sensible (adj.): practical.", zh: "D. sensible（實用的）：不強調原創點子。" }
+  ]},
+  { id: 21, q: "Teachers need to be very ________ when explaining difficult concepts to young learners.", options: ["A. honest", "B. patient", "C. sensible", "D. generous"], answer: 1, diff: "Easy", sec: 15, exp: [
+    { en: "A. honest (adj.): truthful.", zh: "A. honest（誠實的）：不合講解難題語境。" },
+    { en: "B. patient (adj.): [Correct] able to stay calm without getting annoyed.", zh: "B. patient（有耐性的）：【正確答案】向幼童講解難題需有耐性。" },
+    { en: "C. sensible (adj.): having good judgment.", zh: "C. sensible（明智的）：不如 patient 貼切。" },
+    { en: "D. generous (adj.): willing to give.", zh: "D. generous（慷慨的）：不合文意。" }
+  ]},
+  { id: 22, q: "It started to ________ with rain, so we got completely wet before reaching the bus stop.", options: ["A. cover", "B. protect", "C. pour", "D. breathe"], answer: 2, diff: "Hard", sec: 30, exp: [
+    { en: "A. cover (v.): to place over.", zh: "A. cover（覆蓋）：不與 with rain 搭配。" },
+    { en: "B. protect (v.): to keep safe.", zh: "B. protect（保護）：不合句意。" },
+    { en: "C. pour (v.): [Correct] to rain heavily ('pour with rain').", zh: "C. pour（傾盆而下）：【正確答案】pour with rain 指下傾盆大雨。" },
+    { en: "D. breathe (v.): to inhale and exhale.", zh: "D. breathe（呼吸）：不合文意。" }
+  ]},
+  { id: 23, q: "The dolphin is a highly intelligent ________ that lives in the ocean.", options: ["A. region", "B. creature", "C. population", "D. landscape"], answer: 1, diff: "Easy", sec: 15, exp: [
+    { en: "A. region (n.): an area.", zh: "A. region（地區）：海豚是動物非地區。" },
+    { en: "B. creature (n.): [Correct] a living animal or being.", zh: "B. creature（生物；動物）：【正確答案】生活在海洋的高智商生物。" },
+    { en: "C. population (n.): total inhabitants.", zh: "C. population（人口／種群數）：非單一海豚。" },
+    { en: "D. landscape (n.): scenery.", zh: "D. landscape（風景）：不合文意。" }
+  ]},
+  { id: 24, q: "Since my aunt lives next door, I spend a lot of free time playing with my ________.", options: ["A. creature", "B. widow", "C. cousin", "D. stepfather"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. creature (n.): an animal.", zh: "A. creature（動物）：不合邏輯。" },
+    { en: "B. widow (n.): a woman whose husband died.", zh: "B. widow（寡婦）：不合語境。" },
+    { en: "C. cousin (n.): [Correct] a child of one's aunt or uncle.", zh: "C. cousin（堂／表兄弟姊妹）：【正確答案】阿姨的孩子是表兄弟姊妹。" },
+    { en: "D. stepfather (n.): a mother's husband who is not biological father.", zh: "D. stepfather（繼父）：不合親屬關係。" }
+  ]},
+  { id: 25, q: "During the winter, thick snow will ________ the entire mountain range.", options: ["A. protect", "B. pour", "C. cover", "D. breathe"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. protect (v.): to keep safe.", zh: "A. protect（保護）：厚雪不會保護山脈。" },
+    { en: "B. pour (v.): to flow rapidly.", zh: "B. pour（傾倒）：多用於液體或雨。" },
+    { en: "C. cover (v.): [Correct] to lie over a surface.", zh: "C. cover（覆蓋）：【正確答案】厚雪覆蓋整座山脈。" },
+    { en: "D. breathe (v.): to take air in and out.", zh: "D. breathe（呼吸）：不合文意。" }
+  ]},
+  { id: 26, q: "The scientists are studying the rocky ________ of Mars using special robotic cameras.", options: ["A. climate", "B. creature", "C. capital", "D. surface"], answer: 3, diff: "Medium", sec: 22, exp: [
+    { en: "A. climate (n.): weather patterns.", zh: "A. climate（氣候）：不能用 rocky 形容。" },
+    { en: "B. creature (n.): a living animal.", zh: "B. creature（生物）：不合文意。" },
+    { en: "C. capital (n.): main government city.", zh: "C. capital（首都）：火星沒有首都。" },
+    { en: "D. surface (n.): [Correct] the outer or top layer.", zh: "D. surface（表面）：【正確答案】火星多岩石的表面。" }
+  ]},
+  { id: 27, q: "This ________ of the country is famous for producing high-quality wines.", options: ["A. continent", "B. landscape", "C. region", "D. population"], answer: 2, diff: "Medium", sec: 22, exp: [
+    { en: "A. continent (n.): a major landmass.", zh: "A. continent（大洲）：大洲大於國家。" },
+    { en: "B. landscape (n.): visual scenery.", zh: "B. landscape（風景）：風景不生產葡萄酒。" },
+    { en: "C. region (n.): [Correct] a specific area of a country.", zh: "C. region（地區；產區）：【正確答案】國家的葡萄酒產區。" },
+    { en: "D. population (n.): number of people.", zh: "D. population（人口）：不合句意。" }
+  ]},
+  { id: 28, q: "Despite the emergency, the captain remained completely ________ and kept everyone safe.", options: ["A. calm", "B. depressed", "C. anxious", "D. jealous"], answer: 0, diff: "Easy", sec: 15, exp: [
+    { en: "A. calm (adj.): [Correct] peaceful and not panicking.", zh: "A. calm（冷靜的）：【正確答案】緊急情況下保持冷靜。" },
+    { en: "B. depressed (adj.): very sad.", zh: "B. depressed（抑鬱的）：不合緊急應變語境。" },
+    { en: "C. anxious (adj.): worried or nervous.", zh: "C. anxious（焦慮的）：與鎮定相反。" },
+    { en: "D. jealous (adj.): envious.", zh: "D. jealous（妒忌的）：不合文意。" }
+  ]},
+  { id: 29, q: "I am lucky that I ________ all my classmates and have many friends here.", options: ["A. protect from", "B. pour with", "C. consist of", "D. get on well with"], answer: 3, diff: "Hard", sec: 30, exp: [
+    { en: "A. protect from (phr. v.): to keep safe from harm.", zh: "A. protect from（保護……免受）：不合交友語境。" },
+    { en: "B. pour with (phr. v.): to rain heavily.", zh: "B. pour with（下大雨）：只能搭配雨。" },
+    { en: "C. consist of (phr. v.): to be made up of.", zh: "C. consist of（由……組成）：不能用於同學關係。" },
+    { en: "D. get on well with (phr. v.): [Correct] to have a friendly relationship with someone.", zh: "D. get on well with（與……相處融洽）：【正確答案】與同學相處融洽故朋友多。" }
+  ]},
+  { id: 30, q: "The students were ________ by the complicated instructions on the exam paper.", options: ["A. calm", "B. cheerful", "C. confused", "D. talented"], answer: 2, diff: "Easy", sec: 15, exp: [
+    { en: "A. calm (adj.): relaxed.", zh: "A. calm（冷靜的）：複雜指示通常不會讓人冷靜。" },
+    { en: "B. cheerful (adj.): happy.", zh: "B. cheerful（開朗的）：不合考場遇到複雜指示。" },
+    { en: "C. confused (adj.): [Correct] unable to understand clearly.", zh: "C. confused（困惑的）：【正確答案】被複雜指示弄糊塗了。" },
+    { en: "D. talented (adj.): naturally skilled.", zh: "D. talented（有才華的）：不合文意。" }
+  ]}
+]
+
+  const GUIDE = [
+    "Mastery Completion: The session continues until every question is answered correctly; missed or timed-out items return later in the queue. (必須答對全部題目才會完成；答錯或逾時的題目會重新排隊再測。)",
+    "Difficulty Timers: Each item has a countdown based on difficulty (Easy = 15s, Medium = 22s, Hard = 30s). (依難度設有時限：簡易 15 秒、中等 22 秒、進階 30 秒。)",
+    "Bilingual Explanations: When an answer is incorrect or time runs out, English and Chinese explanations are shown for all choices. (答錯或時間到時，會顯示各選項的中英雙語解析。)",
+    "End Summary: A summary report appears after all items are mastered. (完成所有題目後會顯示作答總結。)"
+  ];
+
+  const ICON_CHECK = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4.2 10.6l3.6 3.6L15.8 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const ICON_CROSS = '<svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M5.4 5.4l9.2 9.2M14.6 5.4l-9.2 9.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+  const TOTAL = QUESTIONS.length;
+  const el = (id) => document.getElementById(id);
+  const app = el("app");
+
+  /* ---------- state ---------- */
+
+  let state = null;
+  let timer = null;
+  let pendingAdvance = 0;
+
+  function freshState() {
+    const stats = {};
+    for (const q of QUESTIONS) {
+      stats[q.id] = { attempts: 0, missed: false, timedOut: false, picks: [] };
+    }
+    return {
+      queue: QUESTIONS.slice(),
+      current: null,
+      locked: true,
+      attempts: 0,
+      startedAt: 0,
+      endedAt: 0,
+      stats: stats
+    };
+  }
+
+  /* ---------- helpers ---------- */
+
+  function showView(name) {
+    app.dataset.view = name;
+    for (const id of ["intro-screen", "quiz-screen", "summary-screen"]) {
+      el(id).classList.toggle("is-active", id === name + "-screen");
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+
+  function announce(text) {
+    el("live").textContent = text;
+  }
+
+  function splitOption(text) {
+    const m = /^([A-D])\.\s+(.+)$/.exec(text);
+    return m ? { letter: m[1], text: m[2] } : { letter: null, text: text };
+  }
+
+  /* ---------- build intro ---------- */
+
+  function buildGuide() {
+    const list = el("guide-list");
+    list.innerHTML = "";
+    for (const item of GUIDE) {
+      const zhMatch = /^(.*?)\s*\(([^()]*[\u4e00-\u9fff][^()]*)\)\s*$/.exec(item);
+      const enText = (zhMatch ? zhMatch[1] : item).trim();
+      const zhText = zhMatch ? zhMatch[2].trim() : "";
+
+      const row = document.createElement("div");
+      row.className = "rule";
+
+      const dt = document.createElement("dt");
+      const colon = enText.indexOf(": ");
+      let rest = "";
+      if (colon > -1) {
+        dt.textContent = enText.slice(0, colon + 1);
+        rest = enText.slice(colon + 2);
+      } else {
+        dt.textContent = enText;
+      }
+
+      const dd = document.createElement("dd");
+      if (rest) dd.appendChild(document.createTextNode(rest + " "));
+      if (zhText) {
+        const zh = document.createElement("span");
+        zh.className = "zh";
+        zh.textContent = "(" + zhText + ")";
+        dd.appendChild(zh);
+      }
+
+      row.appendChild(dt);
+      row.appendChild(dd);
+      list.appendChild(row);
+    }
+
+    el("intro-meta").textContent = TOTAL + " items covering the vocabulary from Units 5–13.";
+    el("intro-note").textContent = "All items must be answered correctly to finish.";
+    el("total-num").textContent = String(TOTAL);
+  }
+
+  /* ---------- game flow ---------- */
+
+  function startGame() {
+    state = freshState();
+    state.startedAt = Date.now();
+    state.locked = false;
+    showView("quiz");
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    clearPending();
+    hideFeedback();
+    state.locked = false;
+    if (!state.queue.length) { showSummary(); return; }
+    state.current = state.queue[0];
+    renderQuestion(state.current);
+  }
+
+  function renderQuestion(q) {
+    const rec = state.stats[q.id];
+
+    el("q-label").textContent = "Item " + q.id + " of " + TOTAL;
+    el("q-diff").textContent = q.diff;
+    el("q-sec").textContent = q.sec + "s";
+    el("q-retry").hidden = rec.attempts === 0;
+    el("q-text").textContent = q.q;
+
+    const box = el("options-box");
+    box.innerHTML = "";
+    q.options.forEach((opt, i) => {
+      const parts = splitOption(opt);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "opt";
+      btn.dataset.index = String(i);
+
+      const letter = document.createElement("span");
+      letter.className = "letter";
+      letter.setAttribute("aria-hidden", "true");
+      letter.textContent = parts.letter || String.fromCharCode(65 + i);
+
+      const txt = document.createElement("span");
+      txt.className = "txt";
+      txt.textContent = parts.text;
+
+      const mark = document.createElement("span");
+      mark.className = "mark";
+      mark.setAttribute("aria-hidden", "true");
+
+      btn.appendChild(letter);
+      btn.appendChild(txt);
+      btn.appendChild(mark);
+      btn.addEventListener("click", () => answer(i));
+      box.appendChild(btn);
+    });
+
+    updateHud();
+    startTimer(q.sec);
+    announce("Item " + q.id + " of " + TOTAL + ", " + q.diff + ", " + q.sec + " seconds.");
+  }
+
+  function updateHud() {
+    const mastered = TOTAL - state.queue.length;
+    el("mastered-num").textContent = String(mastered);
+    el("rem-num").textContent = String(state.queue.length);
+    el("prog-fill").style.width = (mastered / TOTAL) * 100 + "%";
+    el("prog").setAttribute("aria-valuenow", String(mastered));
+    el("prog").setAttribute("aria-valuemax", String(TOTAL));
+  }
+
+  function lockOptions() {
+    for (const btn of el("options-box").children) btn.disabled = true;
+  }
+
+  function markAnswer(btn, kind) {
+    btn.classList.add(kind === "ok" ? "is-correct" : "is-wrong");
+    btn.querySelector(".mark").innerHTML = kind === "ok" ? ICON_CHECK : ICON_CROSS;
+  }
+
+  /* ---------- answering ---------- */
+
+  function answer(index) {
+    if (!state || state.locked) return;
+    const q = state.current;
+    if (!q) return;
+
+    state.locked = true;
+    clearTimer();
+    el("timer-box").classList.add("is-stopped");
+    state.attempts++;
+    const rec = state.stats[q.id];
+    rec.attempts++;
+
+    lockOptions();
+    const btns = Array.from(el("options-box").children);
+
+    if (index === q.answer) {
+      markAnswer(btns[index], "ok");
+      for (let i = 0; i < btns.length; i++) if (i !== index) btns[i].classList.add("is-dim");
+      state.queue.shift();
+      updateHud();
+      announce("Correct.");
+      pendingAdvance = window.setTimeout(nextQuestion, 760);
+      return;
+    }
+
+    rec.missed = true;
+    rec.picks.push(index);
+    markAnswer(btns[index], "bad");
+    markAnswer(btns[q.answer], "ok");
+    for (let i = 0; i < btns.length; i++) {
+      if (i !== index && i !== q.answer) btns[i].classList.add("is-dim");
+    }
+    requeueCurrent();
+    showFeedback("Incorrect / 答錯了", q, index, false);
+  }
+
+  function timeExpired() {
+    if (!state || state.locked) return;
+    const q = state.current;
+    if (!q) return;
+
+    state.locked = true;
+    clearTimer();
+    state.attempts++;
+    const rec = state.stats[q.id];
+    rec.attempts++;
+    rec.missed = true;
+    rec.timedOut = true;
+
+    lockOptions();
+    const btns = Array.from(el("options-box").children);
+    markAnswer(btns[q.answer], "ok");
+    for (let i = 0; i < btns.length; i++) if (i !== q.answer) btns[i].classList.add("is-dim");
+
+    requeueCurrent();
+    el("timer-box").classList.add("is-low");
+    showFeedback("Time's Up / 時間到", q, -1, true);
+  }
+
+  function requeueCurrent() {
+    const item = state.queue.shift();
+    state.queue.push(item);
+    updateHud();
+  }
+
+  /* ---------- feedback ---------- */
+
+  function expRow(item) {
+    const li = document.createElement("li");
+    li.className = "exp" + (item.en.indexOf("[Correct]") > -1 ? " is-key" : "");
+
+    const wrap = document.createElement("div");
+    const en = document.createElement("p");
+    en.className = "exp-en";
+    en.textContent = item.en;
+    const zh = document.createElement("p");
+    zh.className = "exp-zh";
+    zh.textContent = item.zh;
+    wrap.appendChild(en);
+    wrap.appendChild(zh);
+    li.appendChild(wrap);
+    return li;
+  }
+
+  function showFeedback(title, q, picked, expired) {
+    const box = el("feedback-box");
+    box.hidden = false;
+    box.className = "feedback" + (expired ? " is-expired" : "");
+
+    el("feedback-title").textContent = title;
+    el("feedback-note").textContent = expired
+      ? "No answer / 未作答"
+      : "Your answer / 你的選擇：" + q.options[picked];
+
+    const list = el("exp-list");
+    list.innerHTML = "";
+    for (const item of q.exp) list.appendChild(expRow(item));
+
+    const btn = el("next-btn");
+    btn.focus({ preventScroll: true });
+    box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    announce(
+      (expired ? "Time's up. " : "Incorrect. ") +
+        "Correct answer: " + q.options[q.answer] + ". Explanations shown."
+    );
+  }
+
+  function hideFeedback() {
+    el("feedback-box").hidden = true;
+  }
+
+  function clearPending() {
+    if (pendingAdvance) { clearTimeout(pendingAdvance); pendingAdvance = 0; }
+  }
+
+  /* ---------- timer (wall clock, pauses when tab hidden) ---------- */
+
+  function startTimer(seconds) {
+    clearTimer();
+    const limit = seconds * 1000;
+    timer = { limit: limit, remaining: limit, deadline: performance.now() + limit, raf: 0, paused: false };
+    el("timer-fill").style.width = "100%";
+    el("timer-fill").classList.remove("is-low");
+    el("timer-box").classList.remove("is-low", "is-paused", "is-stopped");
+    paintTimer(limit, limit);
+    tick();
+  }
+
+  function paintTimer(left, limit) {
+    const pct = limit > 0 ? Math.max(0, Math.min(1, left / limit)) : 0;
+    el("timer-fill").style.width = (pct * 100).toFixed(2) + "%";
+    const text = Math.ceil(left / 1000) + "s";
+    if (el("timer-box").textContent !== text) el("timer-box").textContent = text;
+    const low = left <= 5000;
+    el("timer-fill").classList.toggle("is-low", low);
+    el("timer-box").classList.toggle("is-low", low);
+  }
+
+  function tick() {
+    if (!timer || timer.paused) return;
+    const left = Math.max(0, timer.deadline - performance.now());
+    timer.remaining = left;
+    paintTimer(left, timer.limit);
+    if (left <= 0) { clearTimer(); timeExpired(); return; }
+    timer.raf = requestAnimationFrame(tick);
+  }
+
+  function clearTimer() {
+    if (timer) {
+      if (timer.raf) cancelAnimationFrame(timer.raf);
+      timer = null;
+    }
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (!timer) return;
+    if (document.hidden) {
+      if (timer.paused) return;
+      timer.remaining = Math.max(0, timer.deadline - performance.now());
+      timer.paused = true;
+      if (timer.raf) cancelAnimationFrame(timer.raf);
+      el("timer-box").classList.add("is-paused");
+    } else {
+      if (!timer.paused) return;
+      timer.paused = false;
+      timer.deadline = performance.now() + timer.remaining;
+      el("timer-box").classList.remove("is-paused");
+      tick();
+    }
+  });
+
+  /* ---------- summary ---------- */
+
+  function showSummary() {
+    clearTimer();
+    clearPending();
+    state.endedAt = Date.now();
+
+    const elapsed = Math.floor((state.endedAt - state.startedAt) / 1000);
+    const mins = Math.floor(elapsed / 60);
+    const secs = elapsed % 60;
+    let firstTry = 0;
+    for (const q of QUESTIONS) if (!state.stats[q.id].missed) firstTry++;
+
+    el("sum-first").textContent = firstTry + " / " + TOTAL;
+    el("sum-attempts").textContent = String(state.attempts);
+    el("sum-time").textContent = mins + "m " + secs + "s";
+
+    const area = el("review-area");
+    area.innerHTML = "";
+
+    const missed = QUESTIONS.filter((q) => state.stats[q.id].missed);
+    if (!missed.length) {
+      const p = document.createElement("p");
+      p.className = "perfect";
+      p.textContent = "100% First-Try Accuracy. (全部 " + TOTAL + " 題首次作答即全對。)";
+      area.appendChild(p);
+    } else {
+      for (const q of missed) {
+        const rec = state.stats[q.id];
+
+        const row = document.createElement("article");
+        row.className = "review-item";
+
+        const head = document.createElement("div");
+        head.className = "review-head";
+        const id = document.createElement("span");
+        id.className = "review-id";
+        id.textContent = "Item " + q.id;
+        head.appendChild(id);
+        head.appendChild(tag(q.diff, ""));
+        head.appendChild(tag(rec.attempts + " attempts", ""));
+        if (rec.timedOut) head.appendChild(tag("Timed out / 逾時", "tag-retry"));
+        row.appendChild(head);
+
+        const text = document.createElement("p");
+        text.className = "review-q";
+        text.textContent = q.q;
+        row.appendChild(text);
+
+        const kv = document.createElement("dl");
+        kv.className = "kv";
+        const yours = rec.picks.length ? rec.picks.map((i) => q.options[i]).join(", ") : "No answer / 未作答";
+        kv.appendChild(kvRow("Your answer / 你的選擇", yours, "is-err"));
+        kv.appendChild(kvRow("Correct answer / 正確答案", q.options[q.answer], "is-ok"));
+        row.appendChild(kv);
+
+        const det = document.createElement("details");
+        det.className = "exp-toggle";
+        const sum = document.createElement("summary");
+        sum.textContent = "Explanations / 中英雙語解析";
+        det.appendChild(sum);
+
+        const list = document.createElement("ol");
+        list.className = "exp-list";
+        for (const item of q.exp) list.appendChild(expRow(item));
+        det.appendChild(list);
+        row.appendChild(det);
+
+        area.appendChild(row);
+      }
+    }
+
+    showView("summary");
+    announce("Session complete. First-try answers: " + firstTry + " of " + TOTAL + ".");
+  }
+
+  function tag(text, extra) {
+    const span = document.createElement("span");
+    span.className = "tag " + (extra || "");
+    span.textContent = text;
+    return span;
+  }
+
+  function kvRow(label, value, kind) {
+    const row = document.createElement("div");
+    row.className = "kv-row " + (kind || "");
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    const dd = document.createElement("dd");
+    dd.textContent = value;
+    row.appendChild(dt);
+    row.appendChild(dd);
+    return row;
+  }
+
+  /* ---------- events ---------- */
+
+  el("start-btn").addEventListener("click", startGame);
+
+  el("next-btn").addEventListener("click", () => {
+    if (!state) return;
+    nextQuestion();
+  });
+
+  el("restart-btn").addEventListener("click", () => {
+    clearTimer();
+    clearPending();
+    state = null;
+    hideFeedback();
+    el("timer-box").classList.remove("is-low", "is-paused", "is-stopped");
+    showView("intro");
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (app.dataset.view !== "quiz" || !state) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+    const key = e.key.toLowerCase();
+    const feedbackOpen = !el("feedback-box").hidden;
+
+    if (feedbackOpen) {
+      if (key === "enter" || key === " " || key === "n") {
+        e.preventDefault();
+        nextQuestion();
+      }
+      return;
+    }
+
+    if (state.locked) {
+      if ((key === "enter" || key === " ") && pendingAdvance) {
+        e.preventDefault();
+        clearPending();
+        nextQuestion();
+      }
+      return;
+    }
+
+    let idx = -1;
+    if (key >= "1" && key <= "4") idx = Number(key) - 1;
+    else if (key.length === 1 && "abcd".indexOf(key) > -1) idx = "abcd".indexOf(key);
+
+    if (idx > -1 && idx < el("options-box").children.length) {
+      e.preventDefault();
+      answer(idx);
+    }
+  });
+
+  buildGuide();
+</script>
+</body>
+</html>
